@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>task 2</title>
+    <style>
+        /*nav bar*/
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            top: 0%;
+            width: 96%;
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .nav-icon {
+            gap: 20px;
+            display: flex;
+            list-style: none;
+
+        }
+
+        .nav-signup {
+            color: hsl(222.5deg 30.77% 30.59%);
+            width: 100%;
+            padding: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: #fcfdfd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-signup:hover {
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            color: white;
+        }
+
+        .nav-login {
+            color: hsl(222.5deg 30.77% 30.59%);
+            width: 100%;
+            padding: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: #fcfdfd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            list-style: none;
+
+        }
+
+        .nav-login:hover {
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            color: white;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            font-size: 16px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #001c34;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff9900;
+            /* Adjust hover color */
+        }
+
+        .logo {
+            width: auto;
+            height: auto;
+        }
+
+        .body {
+            padding-top: 80px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /*digital*/
+        .digital {
+            font-family: Arial, sans-serif;
+            color: #001c34;
+            display: flex;
+            justify-content: space-evenly;
+            margin: 30px;
+        }
+
+        .digital-text ul {
+            list-style: none;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #part3 {
+            font-size: 50px;
+            line-height: 72px;
+            margin-right: 50px;
+        }
+
+
+        .body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .icon-bar {
+            width: 100%;
+            background-color: #ffffff;
+            overflow: auto;
+        }
+
+        .icon-bar a {
+            float: left;
+            text-align: center;
+            width: 20%;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            color: #f3f9fa;
+            font-size: 36px;
+        }
+
+        .icon-bar a:hover {
+            background-color: #000;
+        }
+
+        fill-box {
+            float: right;
+        }
+
+        fill-box input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+            width: 120px;
+        }
+
+        .fill-box button {
+            padding: 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background-color: #248795;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 80px;
+            cursor: pointer;
+        }
+
+
+        input[type="text"],
+        input[type=email],
+        input[type=tel],
+        select {
+            cursor: auto;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .sponsers {
+            margin-top: 50px;
+        }
+
+        .sponsers-list {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .sponsers-head {
+            text-align: center;
+        }
+
+        .all-services-cards {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .services-card {
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            display: flex;
+            overflow: hidden;
+            background-color: #fff;
+            width: 16vw;
+            flex-direction: column;
+            font-family: Helvetica, sans-serif;
+            justify-content: center;
+        }
+
+        .service-type {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .service-type1 {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .services-number {
+            color: #248795;
+        }
+
+        /*about*/
+        .about {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        .about-type {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .about-image img {
+            width: 28vw;
+            height: 30vw;
+        }
+
+        .about-text {
+            font-family: Helvetica, sans-serif;
+        }
+
+        .about-type-h {
+            color: #248795;
+            font-size: 40px;
+        }
+
+        .about-read {
+            padding: 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background-color: #248795;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /*footer*/
+        footer {
+            display: flex;
+            flex-flow: row wrap;
+            padding: 30px;
+            padding-bottom: 10px;
+            color: #0c272a;
+            background-color: #f3f9fa;
+        }
+
+        .footer * {
+            flex: 1 100%;
+        }
+
+        .footer-left {
+            margin-right: 1.25em;
+            margin-bottom: 2em;
+        }
+
+        .footer-left img {
+            width: 45%;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: 30px;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer li {
+            line-height: 2em;
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .footer-right>* {
+            flex: 1 50%;
+            margin-right: 1.25em;
+        }
+
+        .box a {
+            color: #999;
+            font-size: 15px;
+            font-family: Helvetica, sans-serif;
+
+        }
+
+        .footer-bottom {
+            color: #6b7576;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .footer-left p {
+            padding-right: 20%;
+            color: #6b7576;
+            font-size: 15px;
+            font-family: Helvetica, sans-serif;
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            background: #248795;
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 50px;
+        }
+
+        .socials a i {
+            color: #e7f2f4;
+            padding: 10px 12px;
+            font-size: 20px;
+        }
+
+        @media screen and (min-width: 600px) {
+            .footer-right>* {
+                flex: 1;
+            }
+
+            .footer-left {
+                flex: 1 0px;
+            }
+
+
+            .footer-right {
+                flex: 2 0px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+            .footer {
+                padding: 15px;
+            }
+
+            main {
+                font-size: 55px;
+            }
+        }
+
+        #bye {
+            width: 70%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        #bye-button {
+            width: 70%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #248795;
+            color: #ffffff;
+        }
+
+        /*news*/
+        .all-product {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            width: 300px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 6px;
+        }
+
+        .product-title {
+            margin-bottom: 8px;
+            color: #3e4c6c;
+            margin-top: auto;
+        }
+
+        .product-title {
+            /* font-size: 1.2rem; */
+            margin-bottom: 8px;
+            color: #979eaf;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #8a8a8a;
+            margin-bottom: 8px;
+            color: rgb(12 39 42)
+        }
+
+        .all-review {
+            display: flex;
+            justify-content: space-between;
+            margin: 14px;
+            padding: 30px;
+            font-family: Helvetica, sans-serif;
+        }
+
+        #rew {
+            font-family: Helvetica, sans-serif;
+            font-size: 20px;
+        }
+
+        .track-lines {
+            font-family: Helvetica, sans-serif;
+        }
+
+        .all-track {
+            display: flex;
+            background-color: #f3f9fa;
+            justify-content: space-evenly;
+            align-items: stretch;
+            font-family: Helvetica, sans-serif;
+
+        }
+
+        .track-form {
+            background-color: #f3f9fa;
+        }
+
+        .track-top {
+            display: flex;
+            padding: 20px;
+            background-color: #ffffff;
+            font-family: Helvetica, sans-serif;
+
+        }
+
+        #request-quote {
+            padding: 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background-color: #248795;
+            color: white;
+            font-size: 17px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 450px;
+
+        }
+        .tra{
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="home.html"><img src="logo.PNG" alt="logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">About Us</a></li>
+            <li><a href="#">technology</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Location</a></li>
+            <li><a href="#">Contact Us</a></li>
+
+        </ul>
+        <ul class="nav-icon">
+            <li><a class="nav-login" href="#">Login</a></li>
+            <li><a class="nav-signup" href="#">Get A Quote</a></li>
+        </ul>
+    </nav>
+    <div class="digital">
+        <div class="digital-text">
+            <ul>
+                <li>
+                    <h1 id="part3">Your Trusted</br> Logistic Partner</h1>
+                </li>
+            </ul>
+            <div class="logistic-partner">
+                <div class="icon-bar">
+                    <a href="#"><img src="plane.png"></a>
+                    <a href="#"><img src="boat.png"></a>
+                    <a href="#"><img src="delivery.png"></a>
+                </div>
+                <div class="fill-box">
+                    <form action="/action_page.php">
+                        <h2>Delivery Destination</h2>
+                        <input type="text" placeholder="From" name="From">
+                        <input type="text" placeholder="To" name="To"></br>
+                        <button type="submit">Search Schedule</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="digital-img">
+            <img src="logistic 1.PNG" style="width: 30vw;">
+        </div>
+    </div>
+    <div class="sponsers">
+        <h2 class="sponsers-head">Our Trested Brand Partners</h2>
+        <div class="sponsers-list">
+            <a href="#"><img src="sponser1.PNG"></a>
+            <a href="#"><img src="sponser2.PNG"></a>
+            <a href="#"><img src="sponser3.PNG"></a>
+            <a href="#"><img src="sponser4.PNG"></a>
+            <a href="#"><img src="sponser5.PNG"></a>
+
+
+        </div>
+    </div>
+    <div class="services">
+        <div class="all-services-cards">
+            <div class="service-type">
+                <div id="service1" class="services-card">
+                    <h1 class="services-number">01</h1>
+                    <div class="services-info">
+                        <h2 class="services-title" id="tittle1">Truckload Shipping</h2>
+                        <p class="services-description">Serving you with competitive pricing, our truckload shipping
+                            assures speed and safety with a first-rate customer service.
+                        </p>
+                        <p class="services-read">Read More</p>
+                    </div>
+                </div>
+                <div id="service2" class="services-card">
+                    <h1 class="services-number">02</h1>
+                    <div class="services-info">
+                        <h2 class="services-title">LTL Shipping</h2>
+                        <p class="services-description">Taking care of your smaller freight sizes, we offer guaranteed
+                            safe and speedy delivery for any Less-Than-Truckload shipment </p>
+                        <p class="services-read">Read More</p>
+
+                    </div>
+                </div>
+                <div id="service3" class="services-card">
+                    <h1 class="services-number">03</h1>
+                    <div class="services-info">
+                        <h2 class="services-title">Logistic Solution</h2>
+                        <p class="services-description">Beyond elite shipping services, Econ Logistics provides
+                            expedited, premium logistic solutions for all your precious cargo.</p>
+                        <p class="services-read">Read More</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="service-type1">
+                <div id="service4" class="services-card">
+                    <h1 class="services-number">04</h1>
+                    <div class="services-info">
+                        <h2 class="services-title">Warehouse Distribution</h2>
+                        <p class="services-description">
+                            Among our warehouse distribution services are storage, inventory management, order
+                            fulfillment, and translation. </p>
+                        <p class="services-read">Read More</p>
+
+                    </div>
+                </div>
+                <div id="service5" class="services-card">
+                    <h1 class="services-number">05</h1>
+                    <div class="services-info">
+                        <h2 class="services-title">Container Drayage</h2>
+                        <p class="services-description">We move freight short distances from the port to the customer's
+                            preferred destination with expedited, timely delivery </p>
+                        <p class="services-read">Read More</p>
+
+                    </div>
+                </div>
+                <div id="service6" class="services-card">
+                    <h1 class="services-number">06</h1>
+                    <div class="services-info">
+                        <h2 class="services-title">Global Forwarding</h2>
+                        <p class="services-description">Always ensuring 100% online tracking, we are ready to pack,
+                            repack, and ship all your goods to any US location.</p>
+                        <p class="services-read">Read More</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--all track-->
+    <div class="all-track">
+        <div class="track-lines">
+            <h5 style="color: #4d9da8;">QUOTE</h5>
+            <H1 class="track-head">Custom Quotes For<br> Elite Services</H1>
+            <p class="track-para">At Courier Logistics, we are committed to serving each and every<br>customer as a
+                trusted partner.</p>
+            <h3>Submit a quote request</h3>
+            <p class="track-para">Our network is over 1.2 million carriers strong and offers<br> competitive rate across
+                all modes</p>
+            <h3 class="track-head">Discuss your quote with one of our<br> account executives</h3>
+            <p class="track-para">With a focus on your business our logistics experts will<br> recommend solution to
+                meet your needs and show you <br>how PLS can help your organization save</p>
+            <h3 class="track-head">Get Started</h3>
+            <p class="track-para">Take control of your supply chain and streamline your<br>freight shipping talk about a
+                win-win.</p>
+        </div>
+        <div class="track-form">
+            <div class="tra">
+                <img src="tra.PNG" style="cursor: pointer;">
+                <div class="track-top">
+                    <div class="form1">
+                        <label for="name">Name</label><br>
+                        <input type="text" placeholder="Enter Name" required /><br>
+                        <label for="Company">Company</label><br>
+                        <input type="text" placeholder="Enter company" required /><br>
+                        <label for="Orgin Zip">Orgin Zip</label><br>
+                        <input type="text" placeholder="enter your zip" required /><br>
+                        <label for="Type of freight">Type of freight</label><br>
+                        <select name="freight">
+                            <option value="Please select the value">Please select the value</option>
+                            <option value="road">road</option>
+                            <option value="sea">sea</option>
+                            <option value="air">Air</option>
+                        </select><br>
+                    </div>
+                    <div class="form2">
+                        <label for="Email" style="float: left;">Email</label><br>
+                        <input type="email" placeholder="Enter Email" required /><br>
+                        <label for="Phone">Phone</label><br>
+                        <input type="tel" placeholder="enter your phone" required /><br>
+                        <label for="Destination Zip">Destination Zip</label><br>
+                        <input type="text" placeholder="enter your zip" required /><br>
+                        <label for="Accessorial service">Accessorial service</label><br>
+                        <select name="accessorial Service">
+                            <option value="Please select the value">Please select the value</option>
+                            <option value="road">road</option>
+                            <option value="sea">sea</option>
+                            <option value="air">Air</option>
+                        </select><br>
+                    </div>
+                </div>
+                <label for="Referral sources">Referral sources</label><br>
+                <select name="Referral sources">
+                    <option value="Please select the value">Please select the value</option>
+                    <option value="road">road</option>
+                    <option value="sea">sea</option>
+                    <option value="air">Air</option>
+                </select><br>
+                <button id="request-quote">request a quote</button><br>
+            </div>
+        </div>
+    </div>
+    <div class="about">
+        <div class="about-image">
+            <img src="about.PNG">
+        </div>
+        <div class="about-text">
+            <h2 style="color: #248795;">About Us</h2>
+            <h1>Courier Logistics is The<br> biggest transportation<br>
+                company</h1>
+            <p>Our customer's satisfaction is our pride, and our single mission: to</br> provide the fastest, safest,
+                and
+                most effective transportation</p>
+            <div class="about-type">
+                <div class="about-type1">
+                    <h1 class="about-type-h">20</h1>
+                    <p>Years of experience</p>
+                </div>
+                <div class="about-type2">
+                    <h1 class="about-type-h">50</h1>
+                    <p>Cities around world</p>
+                </div>
+                <div class="about-type3">
+                    <h1 class="about-type-h">2M</h1>
+                    <p>Happy Clients</p>
+                </div>
+            </div>
+            <button class="about-read">Read More</button>
+
+        </div>
+    </div>
+    <div class="all-product">
+        <div id="product1" class="product-card">
+            <img class="product-image" src="news1.PNG" alt="product 1" />
+            <div class="product-info">
+                <h6 class="product-title">30 march 2023</h6>
+                <p class="product-description">He Quit Answering my personal Email.performed i so insulted</p>
+            </div>
+        </div>
+        <div id="product2" class="product-card">
+            <img class="product-image" src="news2.PNG" alt="product 2" />
+            <div class="product-info">
+                <h6 class="product-title">30 march 2023</h6>
+                <p class="product-description">
+                    He Quit Answering my personal Email.performed i so insulted </p>
+            </div>
+        </div>
+        <div id="product3" class="product-card">
+            <img class="product-image" src="news3.PNG" alt="product 3" />
+            <div class="product-info">
+                <h6 class="product-title">30 march 2023</h6>
+                <p class="product-description">
+                    He Quit Answering my personal Email.performed i so insulted </p>
+            </div>
+        </div>
+    </div>
+    <div class="all-review">
+        <div class="review-text">
+            <h3 style="color: rgb(77 157 168);">Testimonial</h3>
+            <h1>Over 2 Million happy<br>Clients Trested Us in<br> the world</h1>
+        </div>
+        <div class="review-image">
+            <p id="rew">Third-Party Logistics play an important role in <br>supply chain management, exclusively in the
+                <br>developing
+                the logistics industry.
+            </p>
+            <img src="review.PNG">
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-left">
+            <img src="logo.png" alt="">
+            <p>Our customer's satisfaction is our pride, and our single mission: to provide the fastest transportation
+            </p>
+            <div class="socials">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-tumblr"></i></a>
+            </div>
+        </div>
+        <ul class="footer-right">
+            <li>
+                <h2>COMPANY</h2>
+                <ul class="box">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </li>
+            <li class="features">
+                <h2>Service</h2>
+                <ul class="box">
+                    <li><a href="#">Truckload Shipping</a></li>
+                    <li><a href="#">LTL shipping</a></li>
+                    <li><a href="#">Logistic Solution</a></li>
+                    <li><a href="#">GlobalForwarding</a></li>
+                    <li><a href="#">Warehouse Distribution</a></li>
+                </ul>
+            <li>
+                <h2>Get Best Offer<br> Every Time</h2>
+                <ul class="box">
+                    <li><input id="bye" type="text" placeholder="Enter Email" name="email" required><button
+                            type="button" id="bye-button">Subscribe</button></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="footer-bottom">
+            <p>All Right reserved by &copy; conceptial 2023</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MR Calculator</title>
+  <style>
+    #frame {
+      height: 32vw;
+      width: 18vw;
+      border-radius: 10px;
+      background-color: #dc6969;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin: auto;
+      margin-top: 100px;
+    }
+
+    input[type="text"] {
+      border: none;
+      height: 10vw;
+      width: 16vw;
+      padding: 5px;
+      margin-bottom: 10px;
+      margin-top: 5px;
+      border-radius: 10px;
+      color: #ffffff;
+      background-color: #dc6969;
+      font-family: emoji;
+      font-size: xx-large;
+      background-image: url(itachi.jpg);
+    }
+
+    button {
+      width: 45px;
+      height: 45px;
+      margin: 2px;
+      font-size: 18px;
+      border: 0;
+      border-radius: 50px;
+      background-color: #dc6969;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="frame">
+    <input type="text" id="display" placeholder="0" disabled>
+    <br>
+    <button onclick="displayPannu ('1')">1</button>
+    <button onclick="displayPannu ('2')">2</button>
+    <button onclick="displayPannu ('3')">3</button>
+    <button onclick="displayPannu ('+')">+</button>
+    <br>
+    <button onclick="displayPannu ('4')">4</button>
+    <button onclick="displayPannu ('5')">5</button>
+    <button onclick="displayPannu ('6')">6</button>
+    <button onclick="displayPannu ('-')">-</button>
+    <br>
+    <button onclick="displayPannu ('7')">7</button>
+    <button onclick="displayPannu ('8')">8</button>
+    <button onclick="displayPannu ('9')">9</button>
+    <button onclick="displayPannu ('*')">*</button>
+    <br>
+    <button onclick="displayPannu ('.')">.</button>
+    <button onclick="displayPannu ('0')">0</button>
+    <button onclick="displayPannu ('%')">%</button>
+    <button onclick="displayPannu ('/')">/</button>
+    </br>
+    <button onclick="displayPannu('-')">+/-</button>
+    <button onclick="delDisplay()">Del</button>
+    <button onclick="clearDisplay()">C</button>
+    <button onclick="answer()">=</button>
+  </div>
+  <script>
+    function displayPannu(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+    function answer() {
+      document.getElementById('display').value = eval(document.getElementById('display').value);
+
+    }
+    function delDisplay() {
+      const display = document.getElementById('display');
+      display.value = display.value.slice(0,-1);
+    }
+  </script>
+</body>
+
+</html>

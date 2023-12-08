@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchant Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {        
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        form {
+            margin-top: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="url"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Merchant Data</h1>
+    <form id="form" onsubmit="return addOrUpdateData()">
+        <label>Name</label><br>
+        <input type="text" id="name" placeholder="Enter Name" required /><br>
+        <label>Email</label><br>
+        <input type="email" id="email" placeholder="Enter Email" /><br>
+        <label>Phone</label><br>
+        <input type="tel" id="number" placeholder="Enter number" required /><br>
+        <label>Website</label><br>
+        <input type="url" id="url" placeholder="Enter URL" required /><br>
+        <label>Contact Name</label><br>
+        <input type="text" id="c_name" placeholder="Enter Name" required /><br>
+        <label>Contact Phone</label><br>
+        <input type="tel" id="c_number" placeholder="Enter number" required /><br>
+        <label>Contact Email</label><br>
+        <input type="email" id="c_email" placeholder="Enter Email" required />
+        <br>
+        <label>Notes</label><br>
+        <textarea id="textarea" placeholder="Write something.." style="height:100px"></textarea><br>
+        <label>Type</label><br>
+        <input type="radio" id="smallBusiness" name="type">
+        <label>Small Business</label><br>
+        <input type="radio" id="enterprise" name="type">
+        <label>Enterprise</label><br>
+        <input type="radio" id="entrepreneur" name="type">
+        <label>Entrepreneur</label><br>
+        <label>Category</label><br>
+        <select id="category">
+            <option>Clothes</option>
+            <option>Toys</option>
+            <option>Groceries</option>
+            <option>Electronics</option>
+            <option>Digital</option>
+        </select><br>
+        <label>Comission Percentage:</label>
+        <input type="number" id="Percentage" placeholder="Percentage" min="0" max="100"><br>
+        <label>Active From:</label><br>
+        <input id="form_date" type="date"><br>
+        <label>Image:</label><br>
+        <input id="image" type="file"><br>
+        <label>Critical Account</label><br>
+        <input type="radio" id="yes" name="criticalAccount">
+        <label>Yes</label><br>
+        <input type="radio" id="no" name="criticalAccount">
+        <label>No</label><br>
+        <label>Payment Options:</label><br>
+        <input type="checkbox" id="cashOnDelivery" name="paymentOption">
+        <label>Cash on Delivery</label><br>
+        <input type="checkbox" id="upi" name="paymentOption">
+        <label>UPI</label><br>
+        <input type="checkbox" id="cardPayment" name="paymentOption">
+        <label>Card Payment</label><br>
+        <button type="submit" id="submitButton">Submit</button>
+    </form>
+    <br>
+    <table id="merchantTable" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Website</th>
+                <th>Contact Name</th>
+                <th>Contact Email</th>
+                <th>Contact Phone</th>
+                <th>Notes</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Comission Percentage</th>
+                <th>Active From</th>
+                <th>Image</th>
+                <th>Critical Account</th>
+                <th>Payment Options</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        var editRowIndex = -1;
+
+        window.onload = function () {
+            loadMerchantDataFromLocalStorage();
+        };
+
+        function addOrUpdateData() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("number").value;
+            var url = document.getElementById("url").value;
+            var c_name = document.getElementById("c_name").value;
+            var c_email = document.getElementById("c_email").value;
+            var c_phone = document.getElementById("c_number").value;
+            var textarea = document.getElementById("textarea").value;
+            var typeValue = Type();
+            var category = document.getElementById("category").value;
+            var Percentage = document.getElementById("Percentage").value;
+            var image = document.getElementById("image").files[0];
+            var form_date = document.getElementById("form_date").value;
+            var criticalaccount = CriticalAccount();
+            var paymentoptions = Paymentoption();
+
+            var merchantData = {
+                name: name,
+                email: email,
+                phone: phone,
+                url: url,
+                c_name: c_name,
+                c_email: c_email,
+                c_phone: c_phone,
+                textarea: textarea,
+                typeValue: typeValue,
+                category: category,
+                Percentage: Percentage,
+                form_date: form_date,
+                criticalaccount: criticalaccount,
+                paymentoptions: paymentoptions
+            };
+
+            var merchantDataArray = [];
+
+            // Check if there is existing data in local storage
+            if (localStorage.getItem('merchantData')) {
+                merchantDataArray = JSON.parse(localStorage.getItem('merchantData'));
+            }
+
+            if (editRowIndex === -1) {
+                merchantDataArray.push(merchantData);
+            } else {
+                merchantDataArray[editRowIndex] = merchantData;
+            }
+
+            localStorage.setItem('merchantData', JSON.stringify(merchantDataArray));
+
+            document.getElementById("form").reset();
+            loadMerchantDataFromLocalStorage();
+
+            editRowIndex = -1;
+            document.getElementById("submitButton").innerText = "Submit";
+
+            return false;
+        }
+
+        function loadMerchantDataFromLocalStorage() {
+            var merchantDataArray = [];
+
+            if (localStorage.getItem('merchantData')) {
+                merchantDataArray = JSON.parse(localStorage.getItem('merchantData'));
+            }
+
+            var tableBody = document.querySelector("#merchantTable tbody");
+
+            tableBody.innerHTML = "";
+
+            merchantDataArray.forEach(function (data, index) {
+                var row = tableBody.insertRow(-1);
+
+                var cell1 = row.insertCell(0);
+                cell1.textContent = data.name;
+
+                var cell2 = row.insertCell(1);
+                cell2.textContent = data.email;
+
+                var cell3 = row.insertCell(2);
+                cell3.textContent = data.phone;
+
+                var cell4 = row.insertCell(3);
+                cell4.textContent = data.url;
+
+                var cell5 = row.insertCell(4);
+                cell5.textContent = data.c_name;
+
+                var cell6 = row.insertCell(5);
+                cell6.textContent = data.c_email;
+
+                var cell7 = row.insertCell(6);
+                cell7.textContent = data.c_phone;
+
+                var cell8 = row.insertCell(7);
+                cell8.textContent = data.textarea;
+
+                var cell9 = row.insertCell(8);
+                cell9.textContent = data.typeValue;
+
+                var cell10 = row.insertCell(9);
+                cell10.textContent = data.category;
+
+                var cell11 = row.insertCell(10);
+                cell11.textContent = data.Percentage + "%";
+
+                var cell12 = row.insertCell(11);
+                cell12.textContent = data.form_date;
+
+                var cell13 = row.insertCell(12);
+                cell13.textContent = data.criticalaccount;
+
+                var cell14 = row.insertCell(13);
+                cell14.textContent = data.paymentoptions.join(", ");
+
+                var cell15 = row.insertCell(14);
+                cell15.innerHTML = '<button onclick="editRow(' + index + ')">Edit</button> <button onclick="deleteRow(' + index + ')">Delete</button>';
+            });
+        }
+
+        function Type() {
+            var typeRadios = document.getElementsByName("type");
+            for (var i = 0; i < typeRadios.length; i++) {
+                if (typeRadios[i].checked) {
+                    return typeRadios[i].id;
+                }
+            }
+            return "";
+        }
+
+        function Paymentoption() {
+            var paymentOptionCheckboxes = document.getElementsByName("paymentOption");
+            var selectedOptions = [];
+            for (var j = 0; j < paymentOptionCheckboxes.length; j++) {
+                if (paymentOptionCheckboxes[j].checked) {
+                    selectedOptions.push(paymentOptionCheckboxes[j].id);
+                }
+            }
+            return selectedOptions;
+        }
+
+        function CriticalAccount() {
+            var criticalAccountRadios = document.getElementsByName("criticalAccount");
+            for (var i = 0; i < criticalAccountRadios.length; i++) {
+                if (criticalAccountRadios[i].checked) {
+                    return criticalAccountRadios[i].id;
+                }
+            }
+            return "";
+        }
+
+        function editRow(index) {
+            editRowIndex = index;
+
+            var merchantDataArray = JSON.parse(localStorage.getItem('merchantData'));
+            var selectedData = merchantDataArray[index];
+
+            document.getElementById("name").value = selectedData.name;
+            document.getElementById("email").value = selectedData.email;
+            document.getElementById("number").value = selectedData.phone;
+            document.getElementById("url").value = selectedData.url;
+            document.getElementById("c_name").value = selectedData.c_name;
+            document.getElementById("c_email").value = selectedData.c_email;
+            document.getElementById("c_number").value = selectedData.c_phone;
+            document.getElementById("textarea").value = selectedData.textarea;
+
+            var typeRadios = document.getElementsByName("type");
+            for (var i = 0; i < typeRadios.length; i++) {
+                if (typeRadios[i].id === selectedData.typeValue) {
+                    typeRadios[i].checked = true;
+                }
+            }
+
+            document.getElementById("category").value = selectedData.category;
+            document.getElementById("Percentage").value = selectedData.Percentage;
+            document.getElementById("form_date").value = selectedData.form_date;
+
+            var criticalAccountRadios = document.getElementsByName("criticalAccount");
+            for (var i = 0; i < criticalAccountRadios.length; i++) {
+                if (criticalAccountRadios[i].id === selectedData.criticalaccount) {
+                    criticalAccountRadios[i].checked = true;
+                }
+            }
+
+            var paymentOptionCheckboxes = document.getElementsByName("paymentOption");
+            for (var j = 0; j < paymentOptionCheckboxes.length; j++) {
+                if (selectedData.paymentoptions.includes(paymentOptionCheckboxes[j].id)) {
+                    paymentOptionCheckboxes[j].checked = true;
+                }
+            }
+
+            document.getElementById("submitButton").innerText = "Update";
+        }
+
+        function deleteRow(index) {
+            var merchantDataArray = JSON.parse(localStorage.getItem('merchantData'));
+            merchantDataArray.splice(index, 1);
+            localStorage.setItem('merchantData', JSON.stringify(merchantDataArray));
+            loadMerchantDataFromLocalStorage();
+        }
+    </script>
+</body>
+</html>

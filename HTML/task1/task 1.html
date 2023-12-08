@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            top: 0%;
+            width: 96%;
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    
+        }
+    
+        .nav-icon {
+            gap: 20px;
+            display: flex;
+        }
+    
+        .nav-signup {
+            color: hsl(222.5deg 30.77% 30.59%);
+            width: 100%;
+            padding: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: #fcfdfd;
+            border: inset;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .nav-signup:hover {
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            color: white;
+        }
+    
+        .nav-login {
+            color: hsl(222.5deg 30.77% 30.59%);
+            width: 100%;
+            padding: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: #fcfdfd;
+            border: inset;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .nav-login:hover {
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            color: white;
+        }
+    
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+    
+        .nav-links li {
+            font-size: 16px;
+        }
+    
+        .footer-service {
+            text-decoration: none;
+            color: #e5e7eb;
+            transition: color 0.3s;
+            list-style: none;
+    
+        }
+    
+        .nav-links a {
+            text-decoration: none;
+            color: #001c34;
+            transition: color 0.3s;
+        }
+    
+        .nav-links a:hover {
+            color: #ff9900;
+            /* Adjust hover color */
+        }
+    
+        .logo {
+            width: auto;
+            height: auto;
+        }
+    
+        .body {
+            padding-top: 80px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    
+        .slider2 {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 8px;
+        }
+    
+        .smart {
+            font-size: 40px;
+        }
+    
+        .slider-button {
+            display: flex;
+        }
+    
+        .get-button {
+            color: hsl(207.69deg 100% 10.2%);
+            width: 100%;
+            padding: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: #fcfdfd;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+    
+        .get-button:hover {
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            color: white;
+        }
+    
+        .watch-button {
+            color: hsl(207.69deg 100% 10.2%);
+            width: 100%;
+            padding: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            background-color: #fcfdfd;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+    
+        .watch-button:hover {
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            color: white;
+        }
+    
+        .footer-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            top: 0%;
+            width: 96%;
+            background-color: #364466;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .footer-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+    
+        .footer-links li {
+            font-size: 16px;
+        }
+    
+        .footer-links a {
+            text-decoration: none;
+            color: #e5e7eb;
+            transition: color 0.3s;
+        }
+    
+        .footer-links a:hover {
+            color: #ff9900;
+            /* Adjust hover color */
+        }
+    
+        .footer-icon {
+            gap: 20px;
+            display: flex;
+            list-style: none;
+        }
+    
+        .experience-detail {
+            color: #fff;
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            text-align: center;
+            padding-top: 64px;
+            padding-bottom: 64px;
+            display: flex;
+            justify-content: space-evenly;
+            font-family: "Raleway", "sans-serif";
+            border-right: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    
+        .experience {
+            border-right: 1px solid rgba(151, 144, 144, 0.2);
+            border-bottom: none;
+            display: block;
+            float: left;
+            box-sizing: border-box;
+            padding: 30px;
+        }
+    
+        .wrapper {
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px;
+            display: flex;
+            justify-content: space-evenly;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        .wrapper .box {
+            background: hsl(222.5deg 30.77% 30.59%);
+            width: calc(33% - 10px);
+            padding: 25px;
+            border-radius: 3px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        }
+    
+        .wrapper .box i.quote {
+            font-size: 20px;
+            color: hsl(220deg 12.68% 86.08%);
+        }
+    
+        .wrapper .box .content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
+    
+        .box .info .name {
+            font-weight: 600;
+            font-size: 17px;
+            color: hsl(0deg 0% 100%);
+        }
+    
+        .box .info .job {
+            font-size: 16px;
+            font-weight: 500;
+            color: hsl(220deg 12.68% 86.08%);
+        }
+    
+        .box .content .image {
+            height: 75px;
+            width: 75px;
+            padding: 3px;
+            border-radius: 50%;
+        }
+    
+        .content .image img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    
+        .box:hover .content .image img {
+            border-color: hsl(220deg 12.68% 86.08%);
+        }
+    
+        @media (max-width: 1045px) {
+            .wrapper .box {
+                width: calc(50% - 10px);
+                margin: 10px 0;
+            }
+        }
+    
+        @media (max-width: 702px) {
+            .wrapper .box {
+                width: 100%;
+            }
+        }
+    
+        .feed-back-lines {
+            text-align: center;
+        }
+    
+        .feed-head {
+            text-decoration: underline;
+            text-decoration-color: #c5cbd0;
+        }
+    
+        .box-icon {
+            background-color: #dde3eb;
+            height: 75px;
+            width: 75px;
+            padding: 3px;
+            border-radius: 50%;
+            position: relative;
+            bottom: 62px;
+            left: 10px;
+    
+        }
+    
+        .box-icon img {
+            height: 106%;
+            width: 92%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    
+        /*feature_products*/
+        .all-product {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+    
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            width: 300px;
+        }
+    
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    
+        .product-info {
+            padding: 16px;
+        }
+    
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #3e4c6c;
+        }
+    
+        .product-description {
+            font-size: 0.9rem;
+            color: #8a8a8a;
+            margin-bottom: 8px;
+        }
+    
+        .Feature-projects {
+            display: flex;
+        }
+    
+        .projectbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-direction: column;
+            padding: 0 20px;
+            top: 0%;
+            width: 96%;
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .project-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            justify-content: space-evenly;
+            font-family: Arial, sans-serif;
+            color: #666666;
+        }
+    
+        .project-links li {
+            font-size: 16px;
+        }
+    
+        .project-links a {
+            text-decoration: none;
+            color: #001c34;
+            transition: color 0.3s;
+        }
+    
+        .project-links a:hover {
+            color: #ff9900;
+            /* Adjust hover color */
+        }
+    
+        .Feature-headings ul {
+            font-family: Arial, sans-serif;
+            color: #001c34;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: underline;
+            text-decoration-color: #f4f4f4;
+        }
+    
+        #part1 {
+            text-decoration: underline;
+            text-decoration-color: #c5cbd0;
+            text-underline-offset: 8px;
+        }
+    
+        #part2 {
+            text-decoration: underline;
+            text-decoration-color: #f27756;
+            text-underline-offset: 8px;
+        }
+    
+        .digital {
+            font-family: Arial, sans-serif;
+            color: #001c34;
+            display: flex;
+            justify-content: center;
+            margin: 4vw;
+        }
+    
+        .digital-text ul {
+            list-style: none;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        #part3 {
+            font-size: 40px;
+            line-height: 72px;
+        }
+    
+        #part4 {
+            box-sizing: border-box;
+            margin: 0 0 20px;
+            font-size: 22px;
+            line-height: 36px;
+            font-family: "Red Hat Text", sans-serif;
+            color: #606060;
+        }
+    
+        #part5 {
+            box-sizing: border-box;
+            margin: 0 0 20px;
+            font-size: 22px;
+            line-height: 36px;
+            font-family: "Red Hat Text", sans-serif;
+            color: #606060;
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-color: #f27756;
+            text-underline-offset: 8px;
+        }
+    
+        .mail {
+            display: flex;
+            padding: 204px;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: center;
+            background-color: #e9e9e9;
+        }
+    
+        .mail-text ul {
+            list-style: none;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        #part6 {
+            font-size: 56px;
+            line-height: 72px;
+        }
+    
+        #part7 {
+            box-sizing: border-box;
+            margin: 0 0 20px;
+            font-size: 22px;
+            line-height: 36px;
+            font-family: "Red Hat Text", sans-serif;
+            color: #606060;
+        }
+    
+        .mail-button {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+    
+        .get-started {
+            padding: 8px;
+            padding-left: 25px;
+            padding-right: 25px;
+            background-color: #e9e9e9;
+            color: #80889c;
+            width: 100%;
+            cursor: pointer;
+            white-space: nowrap;
+            margin: 10px;
+            border: 2px solid #80889c;
+        }
+    
+        .get-started:hover {
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            color: white;
+        }
+    
+        .type-email {
+            color: #80889c;
+            width: 100%;
+            padding: 8px;
+            padding-left: 12px;
+            padding-right: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+            margin: 10px;
+            background-color: #e9e9e9;
+            border: 2px solid #80889c;
+        }
+    
+        .type-email:hover {
+            background-color: hsl(222.5deg 30.77% 30.59%);
+            color: white;
+        }
+    
+        .mail-icon {
+            height: 75px;
+            width: 75px;
+            padding: 3px;
+            border-radius: 50%;
+            position: relative;
+            top: 11vw;
+            right: 42vw;
+        }
+    
+        .mail-icon1 {
+            height: 75px;
+            width: 75px;
+            padding: 3px;
+            border-radius: 50%;
+            position: relative;
+            top: 35vw;
+            left: 37vw;
+        }
+    
+        /*services*/
+        .all-services-cards {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: row;
+        }
+    
+        .services-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            width: 16vw;
+            flex-direction: column;
+        }
+    
+        .services-card:hover {
+            background-color: #364466;
+        }
+    
+        .services-image {
+            object-fit: cover;
+            width: 5vw;
+            height: 5vw;
+        }
+    
+        .services-info {
+            padding: 16px;
+        }
+    
+        .services-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #3e4c6c;
+        }
+    
+        .services-title:hover {
+            color: #f3f4f6;
+        }
+    
+        .services-description {
+            font-size: 0.9rem;
+            color: #8a8a8a;
+            margin-bottom: 8px;
+        }
+    
+        .services-description:hover {
+            color: #f3f4f6;
+        }
+    
+        .services-text ul {
+            list-style: none;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        #part8 {
+            font-size: 56px;
+            line-height: 72px;
+        }
+    
+        #part9 {
+            box-sizing: border-box;
+            margin: 0 0 20px;
+            font-size: 22px;
+            line-height: 36px;
+            font-family: "Red Hat Text", sans-serif;
+            color: #606060;
+        }
+    
+        #part10 {
+            box-sizing: border-box;
+            margin: 0 0 20px;
+            font-size: 22px;
+            line-height: 36px;
+            font-family: "Red Hat Text", sans-serif;
+            color: #606060;
+            font-weight: bold;
+            text-decoration: underline;
+            text-decoration-color: #f27756;
+            text-underline-offset: 8px;
+        }
+    
+        .service-type {
+            display: flex;
+            flex-direction: column;
+    
+        }
+    
+        .service-type1 {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            top: 31px;
+        }
+    
+        .services {
+            display: flex;
+            align-items: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span style="color:hsl(207.69deg 100% 10.2%)"><b>I</b></span>
+            <span style="color:hsl(207.69deg 100% 10.2%)"><b>D</b></span>
+            <span style="color:hsl(12.4deg 88.14% 53.73%)"><b>E</b></span>
+            <span style="color:hsl(12.4deg 88.14% 53.73%)"><b>A</b></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="task 1.html">Feature</a></li>
+            <li><a href="#">services</a></li>
+            <li><a href="#">product</a></li>
+            <li><a href="#">portofolio</a></li>
+        </ul>
+        <ul class="nav-icon">
+            <button class="nav-login" src="#">login</button>
+            <button class="nav-signup" src="#">signup</button>
+        </ul>
+    </nav>
+    <div class="slider2">
+        <div class="slider-text">
+            <p class="smart">
+                <span style="color:hsl(12.4deg 88.14% 53.73%)"><b>Smart</b></span>
+                <span style="color:hsl(207.69deg 100% 10.2%)"><b>Ideas</b></span>
+            </p>
+            <p class="smart"><span style="color:hsl(207.69deg 100% 10.2%)"><b>For Your Brand</b></span></p>
+            <p class="smart"><span style="color:hsl(207.69deg 100% 10.2%)"><b>Are Here</b></span></p>
+            <p>Overall concept of agency has existed since where <br>there was debate over whether human action.</p>
+            <div class="slider-button">
+                <button class="get-button" src="#" alt="slider-button">Get started</button>
+                <button class="watch-button" src="#" alt="slider-button"><img src="play.png" style="width: 20px;">
+                    watch button</button>
+            </div>
+        </div>
+        <div class="slider-image">
+            <img src="Capture.PNG">
+        </div>
+    </div>
+    <!--experience-->
+    <div class="experience-detail">
+        <div class="experience-column">
+            <span class="experience" style="font-size: 40px;">99+</span>
+            <br>Happy Customer
+        </div>
+        <div class="experience-column">
+            <span class="experience" style="font-size: 40px;">250+</span>
+            <br>Projects Completed
+        </div>
+        <div class="experience-column">
+            <span class="experience" style="font-size: 40px;">5+</span>
+            <br>Year Experience
+        </div>
+    </div>
+    </div>
+    <!--services-->
+    <div class="services">
+        <div class="all-services-cards">
+            <div class="service-type">
+                <div id="service1" class="services-card">
+                    <img class="services-image" src="services1.png" alt="services 1" />
+                    <div class="services-info">
+                        <h2 class="services-title" id="tittle1">Product Design</h2>
+                        <p class="services-description" id="des1">However independent agencies the are technically part
+                            of
+                            executive
+                        </p>
+                    </div>
+                </div>
+                <div id="service3" class="services-card">
+                    <img class="services-image" src="services3.png" alt="services 3" />
+                    <div class="services-info">
+                        <h2 class="services-title">UI/UX Design</h2>
+                        <p class="services-description">
+                            However in dependent agencies the are technically part of executive </p>
+                    </div>
+                </div>
+            </div>
+            <div class="service-type1">
+                <div id="service2" class="services-card">
+                    <img class="services-image" src="services2.png" alt="services 2" />
+                    <div class="services-info">
+                        <h2 class="services-title">Visual Design</h2>
+                        <p class="services-description">Visual Design
+                            However in dependent agencies the are technically part of executive</p>
+                    </div>
+                </div>
+                <div id="service4" class="services-card">
+                    <img class="services-image" src="services4.png" alt="services 4" />
+                    <div class="services-info">
+                        <h2 class="services-title">Bussiness Analytic</h2>
+                        <p class="services-description">
+                            However in dependent agencies the are technically part of executive </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="services-text">
+            <ul>
+                <li>
+                    <h1 id="part8">We Provide Various Kind of Services for You.</h1>
+                </li>
+                <li>
+                    <p id="part9">Most federal agencies are created by congress through statutes called enabling
+                        acts.</p>
+                </li>
+                <li><a id="part10" href="#">Explore More</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--digital-->
+    <div class="digital">
+        <div class="digital-text">
+            <ul>
+                <li>
+                    <h1 id="part3">We Are Experience In </br>The Digital Industry.</h1>
+                </li>
+                <li>
+                    <p id="part4"> before the digital dgency establishment bill was </br>passed, the cabinet
+                        secretariat's information technology </br> comprehensive security system</p>
+                </li>
+                <li><a id="part5" href="#">Explore More</a></li>
+            </ul>
+        </div>
+        <div class="digital-img">
+            <img src="Experience.PNG">
+        </div>
+    </div>
+    <!--Feature Products-->
+    <div class="Feature-headings">
+        <ul>
+            <li>
+                <h1 id="part1">Our Feature Projects</h1>
+            </li>
+            <li>
+                <p id="part2">Explore More</p>
+            </li>
+        </ul>
+        <p style="line-height: 1.6;padding-left: 50px;">Establishment bill was passed, the cabinet secretariat's
+            </br>technology comprehensive security system</P>
+    </div>
+    <div class="Feature-projects">
+        <nav class="projectbar">
+            <ul class="project-links">
+                <li><a href="task 1.html">All</a></li>
+                <li><a href="#">Mobile Design</a></li>
+                <li><a href="#">Web Design</a></li>
+                <li><a href="#">Illustration</a></li>
+                <li><a href="#">Advertising</a></li>
+                <li><a href="#">Development</a></li>
+            </ul>
+            <div>
+                <div class="all-product">
+                    <div id="product1" class="product-card">
+                        <img class="product-image" src="feature_product1.PNG" alt="product 1" />
+                        <div class="product-info">
+                            <h2 class="product-title">Medical Landing Page</h2>
+                            <p class="product-description">
+                                However in dependent agencies the are technically part of executive. </p>
+                        </div>
+                    </div>
+                    <div id="product2" class="product-card">
+                        <img class="product-image" src="feature_product2.PNG" alt="product 2" />
+                        <div class="product-info">
+                            <h2 class="product-title">Fintech Mobile App</h2>
+                            <p class="product-description">
+                                However in dependent agencies the are technically part of executive </p>
+                        </div>
+                    </div>
+                    <div id="product3" class="product-card">
+                        <img class="product-image" src="feature_product3.PNG" alt="product 3" />
+                        <div class="product-info">
+                            <h2 class="product-title">Beauty Landing Page</h2>
+                            <p class="product-description">
+                                However in dependent agencies the are technically part of executive </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!--feedback page-->
+    <div class="feed-back">
+        <div class="feed-back-lines">
+            <h1 class="feed-head">Our Happy Customers</h1>
+            <p>Establishment bill was passed, the cabinet secretariat's information </br> technology comprehensive
+                security
+                system</p>
+        </div>
+        <div class="wrapper">
+            <div class="box">
+                <div class="box-icon">
+                    <img src="qoute.PNG">
+                </div>
+                <p style="color:hsl(220deg 12.68% 86.08%);">This is an amazing company. They were given a mission to
+                    create a website
+                    for our professional firm with
+                    a very tight timeline. They met and exceeded all of our expectations and in served us very well.
+                </p>
+                <div class="content">
+                    <div class="info">
+                        <div class="name">Subhura Sharma</div>
+                        <div class="job">Product Manager</div>
+                        <div class="image">
+                            <img src="profile.PNG" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-icon">
+                    <img src="qoute.PNG">
+                </div>
+                <p style="color:hsl(220deg 12.68% 86.08%);">Great results. Enjoyable to work and most importantly,
+                    enabled us to have
+                    the presence on the web we needed to conduct business market.</p>
+                <div class="content">
+                    <div class="info">
+                        <div class="name">Karen Lynn</div>
+                        <div class="job">Marketing Director</div>
+                        <div class="image">
+                            <img src="profile1.PNG" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--mail process-->
+    <div class="mail">
+        <div class="mail-icon">
+            <img src="mail.PNG">
+        </div>
+        <div class="mail-icon1">
+            <img src="mail1.PNG">
+        </div>
+        <div class="mail-text">
+            <ul>
+                <li>
+                    <h1 id="part6">Subscribe To Get The Latest News About Us</h1>
+                </li>
+                <li>
+                    <p id="part7"> Establishment bill was passed, the cabinet secretariat's information technology
+                        comprehensive security system</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mail-button">
+            <a class="type-email" href="https://mail.google.com/mail/u/0/#inbox?compose=new" alt="slider-button">Type
+                your email</a>
+            <button class="get-started" src="#" alt="slider-button">Get Stared</button>
+        </div>
+    </div>
+    <!--footer page-->
+    <footer class="footer-bar">
+        <div class="logo">
+            <span style="color:hsl(207.69deg 100% 10.2%)"><b>I</b></span>
+            <span style="color:hsl(207.69deg 100% 10.2%)"><b>D</b></span>
+            <span style="color:hsl(12.4deg 88.14% 53.73%)"><b>E</b></span>
+            <span style="color:hsl(12.4deg 88.14% 53.73%)"><b>A</b></span>
+        </div>
+        <ul class="footer-links">
+            <li><a href="#">services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Location</a></li>
+            <li><a href="#">Pricing</a></li>
+
+        </ul>
+        <ul class="footer-icon">
+            <li><a class="footer-service" href="#">services</a></li>
+        </ul>
+    </footer>
+
+</body>
+
+</html>

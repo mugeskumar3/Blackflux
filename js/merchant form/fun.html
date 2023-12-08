@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchant Data</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Merchant Data</h1>
+    <form id="form">
+        <label>Name</label><br>
+        <input type="text" id="name" placeholder="Enter Name" required /><br>
+        <label>Email</label><br>
+        <input type="email" id="email" placeholder="Enter Email" /><br>
+        <label>Phone</label><br>
+        <input type="tel" id="number" placeholder="Enter number" required /><br>
+        <!-- Add other form fields as needed -->
+        <button type="button" id="submitButton">Submit</button>
+    </form>
+    <br>
+    <table id="merchantTable" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <!-- Add more table headers as needed -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be populated here using JavaScript -->
+        </tbody>
+    </table>
+    <script>
+        class MerchantManager {
+            constructor() {
+                this.editRowIndex = -1;
+                this.merchantDataArray = [];
+                this.form = document.getElementById("form");
+                this.submitButton = document.getElementById("submitButton");
+                this.tableBody = document.querySelector("#merchantTable tbody");
+                
+                // Load data from local storage when the page loads
+                this.loadMerchantDataFromLocalStorage();
+                
+                // Attach event handlers
+                this.form.addEventListener("submit", (event) => this.addOrUpdateData(event));
+                this.submitButton.addEventListener("click", () => this.addOrUpdateData());
+            }
+            
+            addOrUpdateData(event) {
+                if (event) {
+                    event.preventDefault();
+                }
+                
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const phone = document.getElementById("number").value;
+                // Add other form field values as needed
+                
+                const merchantData = {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    // Add other data properties as needed
+                };
+                
+                if (this.editRowIndex === -1) {
+                    // Add new data to the array
+                    this.merchantDataArray.push(merchantData);
+                } else {
+                    // Update existing data if in edit mode
+                    this.merchantDataArray[this.editRowIndex] = merchantData;
+                }
+                
+                // Store the updated data in local storage
+                localStorage.setItem("merchantData", JSON.stringify(this.merchantDataArray));
+                
+                // Clear the form and update the table
+                this.form.reset();
+                this.loadMerchantDataFromLocalStorage();
+                
+                // Reset edit mode
+                this.editRowIndex = -1;
+                this.submitButton.innerText = "Submit";
+            }
+            
+            loadMerchantDataFromLocalStorage() {
+                // Retrieve data from local storage
+                const storedData = localStorage.getItem("merchantData");
+                
+                if (storedData) {
+                    // Parse stored data as JSON
+                    this.merchantDataArray = JSON.parse(storedData);
+                }
+                
+                // Clear the existing table data
+                this.tableBody.innerHTML = "";
+                
+                // Populate the table with data from the array
+                this.merchantDataArray.forEach((data, index) => {
+                    const row = this.tableBody.insertRow(-1);
+                    
+                    // Create and populate table cells here
+                    const cell1 = row.insertCell(0);
+                    cell1.textContent = data.name;
+                    
+                    const cell2 = row.insertCell(1);
+                    cell2.textContent = data.email;
+                    
+                    const cell3 = row.insertCell(2);
+                    cell3.textContent = data.phone;
+                    
+                    // Add other table cells as needed
+                    
+                    const cell4 = row.insertCell(3);
+                    cell4.innerHTML = `<button onclick="merchantManager.editRow(${index})">Edit</button> <button onclick="merchantManager.deleteRow(${index})">Delete</button>`;
+                });
+            }
+            
+            editRow(index) {
+                // Set the editRowIndex to the selected row index
+                this.editRowIndex = index;
+                
+                // Populate the form fields with data from the selected row
+                const selectedData = this.merchantDataArray[index];
+                document.getElementById("name").value = selectedData.name;
+                document.getElementById("email").value = selectedData.email;
+                document.getElementById("number").value = selectedData.phone;
+                // Populate other form fields as needed
+                
+                // Change the submit button text to "Update" in edit mode
+                this.submitButton.innerText = "Update";
+            }
+            
+            deleteRow(index) {
+                // Remove the selected data from the array
+                this.merchantDataArray.splice(index, 1);
+                
+                // Store the updated data in local storage
+                localStorage.setItem("merchantData", JSON.stringify(this.merchantDataArray));
+                
+                // Refresh the table
+                this.loadMerchantDataFromLocalStorage();
+            }
+        }
+        
+        const merchantManager = new MerchantManager();
+    </script>
+</body>
+</html>
