@@ -138,7 +138,6 @@ const App: React.FC = () => {
                 handleSubmit={handleSubmit}
                 handleEdit={handleEdit}
                 handleChange={handleChange}
-                handlePaymentOptionsFilter={handlePaymentOptionsFilter}
               />
             }
           />

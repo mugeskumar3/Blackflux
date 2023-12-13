@@ -1,7 +1,5 @@
 // Form.tsx
 import React, { useEffect } from "react";
-import Filter from "./filter";
-
 interface FormData {
   name: string;
   email: string;
@@ -35,20 +33,15 @@ interface FormProps {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => void;
-  handlePaymentOptionsFilter: (selectedOptions: string[]) => void;
+  
 }
 const Form: React.FC<FormProps> = ({
   formData,
   setFormData,
   tableData,
-  setTableData,
   editIndex,
-  setEditIndex,
-  paymentOptions,
   handleSubmit,
-  handleEdit,
   handleChange,
-  handlePaymentOptionsFilter,
 }) => {
   useEffect(() => {
     if (editIndex !== null) {
@@ -281,10 +274,7 @@ const Form: React.FC<FormProps> = ({
         </div>
         <button type="submit">{editIndex !== null ? "Update" : "Submit"}</button>
       </form>
-      <Filter
-        paymentOptions={paymentOptions}
-        onFilterChange={handlePaymentOptionsFilter}
-      />
+     
     </div>
   );
 };
