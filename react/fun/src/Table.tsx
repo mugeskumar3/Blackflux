@@ -1,5 +1,6 @@
 // Table.tsx
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Merchant {
   name: string;
@@ -34,16 +35,19 @@ const Table: React.FC<TableProps> = ({
   onEdit,
   editIndex,
 }) => {
+  const navigate = useNavigate();
+
+  const handleEdit = (index: number) => {
+    onEdit(index);
+    // Navigate to the form view programmatically
+    navigate("/");
+  };
+  
   const handleDelete = (index: number) => {
     const newData = [...data];
     newData.splice(index, 1);
     onDataChange(newData);
   };
-
-  const handleEdit = (index: number) => {
-    onEdit(index);
-  };
-
   return (
     <table>
       <thead>

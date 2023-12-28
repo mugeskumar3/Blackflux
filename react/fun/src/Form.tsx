@@ -1,5 +1,6 @@
 // Form.tsx
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 interface FormData {
   name: string;
   email: string;
@@ -39,19 +40,27 @@ const Form: React.FC<FormProps> = ({
   formData,
   setFormData,
   tableData,
+  setTableData,
   editIndex,
   handleSubmit,
   handleChange,
 }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (editIndex !== null) {
       setFormData(tableData[editIndex]);
     }
   }, [editIndex, tableData, setFormData]);
 
+  const handleNavigation = () => {
+    // Navigate to the table view programmatically
+    navigate('/table');
+  };
+
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => { handleSubmit(e); handleNavigation(); }}>
         <div>
           <label htmlFor="name">Name</label>
           <input
@@ -274,7 +283,6 @@ const Form: React.FC<FormProps> = ({
         </div>
         <button type="submit">{editIndex !== null ? "Update" : "Submit"}</button>
       </form>
-     
     </div>
   );
 };

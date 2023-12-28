@@ -112,17 +112,6 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Form</Link>
-            </li>
-            <li>
-              <Link to="/table">Table</Link>
-            </li>
-          </ul>
-        </nav>
         <Routes>
           <Route
             path="/"
@@ -159,7 +148,6 @@ const App: React.FC = () => {
             }
           />
         </Routes>
-      </div>
     </Router>
   );
 };
