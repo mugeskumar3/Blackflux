@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "checked": false,
+      "item": "practice player1"
+    },
+    {
+      "id": 2,
+      "checked": false,
+      "item": "hi"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "item": "poitu va"
+    }
+  ]
+}
