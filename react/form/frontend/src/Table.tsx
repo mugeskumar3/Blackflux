@@ -1,8 +1,10 @@
 // Table.tsx
+import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 interface Merchant {
+  [x: string]: any;
   name: string;
   email: string;
   phone: string;
@@ -43,11 +45,21 @@ const Table: React.FC<TableProps> = ({
     navigate("/");
   };
   
-  const handleDelete = (index: number) => {
-    const newData = [...data];
-    newData.splice(index, 1);
-    onDataChange(newData);
-  };
+ const handleDelete = (index: number) => {
+    // Use the delete API endpoint to remove the data from the server
+    const idToDelete = data[index]._id;
+    axios.delete(`http://localhost:5000/api/data/${idToDelete}`)
+      .then((response) => {
+        console.log("Data deleted successfully:", response.data);
+        const updatedData = [...data];
+        updatedData.splice(index, 1);
+        onDataChange(updatedData); // Update the state immediately
+      })
+      .catch((error) => {
+        console.error("Error deleting data:", error);
+      });
+  
+};
   return (
     <table>
       <thead>
@@ -100,9 +112,9 @@ const Table: React.FC<TableProps> = ({
             <td>{item.paymentOptions}</td>
             <td>
               <button onClick={() => handleEdit(index)}>Edit</button>
-              <button onClick={() => handleDelete(index)}>Delete</button>
+               <button onClick={() => handleDelete(index)}>Delete</button>
             </td>
-          </tr>
+          </tr> 
         ))}
       </tbody>
       </table>

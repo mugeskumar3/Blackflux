@@ -34,7 +34,6 @@ interface FormProps {
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => void;
-  
 }
 const Form: React.FC<FormProps> = ({
   formData,
@@ -55,12 +54,17 @@ const Form: React.FC<FormProps> = ({
 
   const handleNavigation = () => {
     // Navigate to the table view programmatically
-    navigate('/table');
+    navigate("/table");
   };
 
   return (
     <div className="form-container">
-      <form onSubmit={(e) => { handleSubmit(e); handleNavigation(); }}>
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+          handleNavigation();
+        }}
+      >
         <div>
           <label htmlFor="name">Name</label>
           <input
@@ -240,7 +244,6 @@ const Form: React.FC<FormProps> = ({
             type="checkbox"
             id="isCriticalAccount"
             name="isCriticalAccount"
-            checked={formData.isCriticalAccount}
             onChange={handleChange}
           />
         </div>
@@ -281,7 +284,9 @@ const Form: React.FC<FormProps> = ({
             <label htmlFor="cardPayment">Card Payment</label>
           </div>
         </div>
-        <button type="submit">{editIndex !== null ? "Update" : "Submit"}</button>
+        <button type="submit">
+          {editIndex !== null ? "Update" : "Submit"}
+        </button>
       </form>
     </div>
   );

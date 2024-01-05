@@ -1,78 +1,103 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors = require('cors'); 
 const bodyParser = require('body-parser');
+
 const app = express();
-const PORT = process.env.PORT || 3010;
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://kumaran:cUaelQDwiWCkReJW@cluster1.mcfsfzz.mongodb.net/persondetails')
-.then(() => {
-    console.log('Connected to MongoDB');
-})
-.catch((error) => {
-    console.error('Error connecting to MongoDB: ', error);
+const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(bodyParser.json());
+
+// Connect to MongoDB (replace 'your_database_url' with your actual MongoDB connection string)
+mongoose.connect('mongodb+srv://mugeskumar3:jlGkAgeZeQaUhh3Q@cluster0.aqgewzu.mongodb.net/', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
-// Define MongoDB schema and model
-const personSchema = new mongoose.Schema({
+const db = mongoose.connection;
+
+db.on('error', (error) => {
+  console.error('MongoDB connection error:', error);
+});
+
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+const Schema = mongoose.Schema;
+
+// Define your MongoDB schema
+const formDataSchema = new Schema({
   name: String,
   email: String,
   phone: String,
-  website:String,
-  contact:String,
-  number:String,
-  another:String,
-  notes:String,
-  type:String,
-  category:String,
-  commission:Number,
-  date:Date,
-  logo:String,
-  criticalAccount:Array,
-  payment:String,
+  website: String,
+  contactName: String,
+  contactPhone: String,
+  contactEmail: String,
+  notes: String,
+  type: String,
+  category: String,
+  commissionPercentage: Number,
+  chooseDate: String,
+  logo: String,
+  isCriticalAccount:String,
+  paymentOptions: String,
 });
-const Person = mongoose.model('Person', personSchema);
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
-// Routes
-app.get('/api/persons', async (req, res) => {
+
+// Create a model based on the schema
+const FormDataModel = mongoose.model('FormData', formDataSchema);
+
+// API endpoint to get all form data
+app.get('/api/data', async (req, res) => {
   try {
-    const persons = await Person.find();
-    res.json(persons);
+    const formData = await FormDataModel.find();
+    res.json(formData);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error fetching data:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
-app.post('/api/persons', async (req, res) => {
+
+// API endpoint to add new form data
+app.post('/api/data', async (req, res) => {
   try {
-    const newPerson = new Person(req.body);
-    const savedPerson = await newPerson.save();
-    res.json(savedPerson);
+    const newFormData = new FormDataModel(req.body);
+    // Log the received data in the terminal
+    console.log('Received data:', req.body);
+    const savedFormData = await newFormData.save();
+    res.json(savedFormData);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error adding data:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
-app.put('/api/persons/:id', async (req, res) => {
+
+// API endpoint to update form data
+app.put('/api/data/:id', async (req, res) => {
   try {
-    const updatedPerson = await Person.findByIdAndUpdate(
+    const updatedFormData = await FormDataModel.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }
     );
-    res.json(updatedPerson);
+    res.json(updatedFormData);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error updating data:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
-app.delete('/api/persons/:id', async (req, res) => {
+
+// API endpoint to delete form data
+app.delete('/api/data/:id', async (req, res) => {
   try {
-    await Person.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Person deleted successfully' });
+    const deletedFormData = await FormDataModel.findByIdAndDelete(req.params.id);
+    res.json(deletedFormData);
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error deleting data:', error);
+    res.status(500).send('Internal Server Error');
   }
 });
-// Start the server
+
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
