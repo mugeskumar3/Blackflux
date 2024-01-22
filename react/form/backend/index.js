@@ -9,8 +9,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Connect to MongoDB (replace 'your_database_url' with your actual MongoDB connection string)
-mongoose.connect('mongodb+srv://mugeskumar3:jlGkAgeZeQaUhh3Q@cluster0.aqgewzu.mongodb.net/', {
+  mongoose.connect('mongodb+srv://mugeskumar3:jlGkAgeZeQaUhh3Q@cluster0.aqgewzu.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

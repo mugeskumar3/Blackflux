@@ -1,4 +1,3 @@
-// Table.tsx
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -44,11 +43,12 @@ const Table: React.FC<TableProps> = ({
     // Navigate to the form view programmatically
     navigate("/");
   };
-  
- const handleDelete = (index: number) => {
+
+  const handleDelete = (index: number) => {
     // Use the delete API endpoint to remove the data from the server
     const idToDelete = data[index]._id;
-    axios.delete(`http://localhost:5000/api/data/${idToDelete}`)
+    axios
+      .delete(`http://localhost:5000/api/data/${idToDelete}`)
       .then((response) => {
         console.log("Data deleted successfully:", response.data);
         const updatedData = [...data];
@@ -58,8 +58,8 @@ const Table: React.FC<TableProps> = ({
       .catch((error) => {
         console.error("Error deleting data:", error);
       });
-  
-};
+  };
+
   return (
     <table>
       <thead>
@@ -76,7 +76,7 @@ const Table: React.FC<TableProps> = ({
           <th>Category</th>
           <th>Commission Percentage</th>
           <th>Choose Date</th>
-          <th>Image</th>
+          <th>Logo</th>
           <th>Critical Account</th>
           <th>Payment Options</th>
           <th>Actions</th>
@@ -102,22 +102,24 @@ const Table: React.FC<TableProps> = ({
                 : ""}
             </td>
             <td>
-              <img
-                src={item.logo}
-                alt="Logo"
-                style={{ width: "50px", height: "50px" }}
-              />
+              {item.logo && (
+                <img
+                  src={item.logo}
+                  alt={`Logo for ${item.name}`}
+                  style={{ width: "50px", height: "50px" }}
+                />
+              )}
             </td>
             <td>{item.isCriticalAccount.toString()}</td>
             <td>{item.paymentOptions}</td>
             <td>
               <button onClick={() => handleEdit(index)}>Edit</button>
-               <button onClick={() => handleDelete(index)}>Delete</button>
+              <button onClick={() => handleDelete(index)}>Delete</button>
             </td>
-          </tr> 
+          </tr>
         ))}
       </tbody>
-      </table>
+    </table>
   );
 };
 
