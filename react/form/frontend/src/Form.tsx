@@ -1,6 +1,8 @@
 // Form.tsx
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 interface FormData {
   name: string;
   email: string;
@@ -86,15 +88,14 @@ const Form: React.FC<FormProps> = ({
             onChange={handleChange}
           />
         </div>
-
         <div>
           <label htmlFor="phone">Phone</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
+          <PhoneInput
+            country={"in"} // Set India as the default country
             value={formData.phone}
-            onChange={handleChange}
+            onChange={(phone) =>
+              setFormData((prevData) => ({ ...prevData, phone }))
+            }
           />
         </div>
 
@@ -122,12 +123,12 @@ const Form: React.FC<FormProps> = ({
 
         <div>
           <label htmlFor="contactPhone">Contact Phone</label>
-          <input
-            type="tel"
-            id="contactPhone"
-            name="contactPhone"
+          <PhoneInput
+            country={"in"} // Set India as the default country
             value={formData.contactPhone}
-            onChange={handleChange}
+            onChange={(contactPhone) =>
+              setFormData((prevData) => ({ ...prevData, contactPhone }))
+            }
           />
         </div>
 

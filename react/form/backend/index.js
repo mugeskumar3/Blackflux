@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-  mongoose.connect('mongodb+srv://mugeskumar3:jlGkAgeZeQaUhh3Q@cluster0.aqgewzu.mongodb.net/', {
+  mongoose.connect('mongodb+srv://mugeskumar3:jlGkAgeZeQaUhh3Q@cluster0.aqgewzu.mongodb.net/MERCHANT', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -60,6 +60,8 @@ app.get('/api/data', async (req, res) => {
 // API endpoint to add new form data
 app.post('/api/data', async (req, res) => {
   try {
+      // Convert phone number to a standardized format if needed
+      req.body.phone = req.body.phone.replace(/\D/g, ""); // Remove non-numeric characters
     const newFormData = new FormDataModel(req.body);
     // Log the received data in the terminal
     console.log('Received data:', req.body);
@@ -74,6 +76,8 @@ app.post('/api/data', async (req, res) => {
 // API endpoint to update form data
 app.put('/api/data/:id', async (req, res) => {
   try {
+     // Convert phone number to a standardized format if needed
+     req.body.phone = req.body.phone.replace(/\D/g, ""); // Remove non-numeric characters
     const updatedFormData = await FormDataModel.findByIdAndUpdate(
       req.params.id,
       req.body,

@@ -1,5 +1,5 @@
 {
-  "name": "merchant",
+  "name": "commercial_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,17 +7,15 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.67",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.17",
-    "axios": "^1.6.3",
+    "@types/node": "^16.18.75",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "antd": "^5.13.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-phone-input-2": "^2.15.1",
-    "react-router-dom": "^6.20.1",
+    "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
-    "react-tabs": "^6.0.2",
-    "typescript": "^5.3.3",
+    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
