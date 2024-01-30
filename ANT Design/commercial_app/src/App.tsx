@@ -1,4 +1,4 @@
-//app.tsx
+// App.tsx
 import React, { useState } from "react";
 import {
   MenuFoldOutlined,
@@ -11,39 +11,51 @@ import {
   PoweroffOutlined,
 } from "@ant-design/icons";
 import "./App.css";
-import { Layout, Menu, Button, theme } from "antd";
-import { Link } from "react-router-dom";
+import { Layout, Menu, Button, theme, notification } from "antd";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+
 
 const { Header, Sider, Content } = Layout;
-
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const navigate = useNavigate(); // Get the navigation function
+
+  const handleLogout = async () => {
+    // Your authentication logic goes here
+    // For simplicity, let's assume logout is successful after a delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Show success notification
+    notification.success({
+      message: "Logout Successful",
+      description: "You have successfully logged out.",
+    });
+
+    // Redirect to the login page
+    navigate("/");
+  };
 
   return (
     <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+    <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
-        <Menu
-  theme="dark"
-  mode="inline"
-  defaultSelectedKeys={["1"]}
->
-  <Menu.Item key="1" icon={<UserOutlined />}>
-    <Link to="/language">Language</Link>
-  </Menu.Item>
-  <Menu.Item key="2" icon={<HighlightOutlined />}>
-    <Link to="/steps">Steps</Link>
-  </Menu.Item>
-  <Menu.Item key="3" icon={<PlusCircleOutlined />}>
-    <Link to="/user">User</Link>
-  </Menu.Item>
-  <Menu.Item key="4" icon={<MediumOutlined />}>
-    <Link to="/medium">Medium</Link>
-  </Menu.Item>
-</Menu>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu.Item key="1" icon={<UserOutlined />}>
+            <Link to="/home/language">Language</Link>
+          </Menu.Item>
+          <Menu.Item key="2" icon={<HighlightOutlined />}>
+            <Link to="/home/steps">Steps</Link>
+          </Menu.Item>
+          <Menu.Item key="3" icon={<PlusCircleOutlined />}>
+            <Link to="/home/user">User</Link>
+          </Menu.Item>
+          <Menu.Item key="4" icon={<MediumOutlined />}>
+            <Link to="/home/medium">Medium</Link>
+          </Menu.Item>
+        </Menu>
       </Sider>
       <Layout>
         <Header
@@ -69,8 +81,8 @@ const App: React.FC = () => {
               type="text"
               icon={<HomeOutlined />}
               style={{
-                color:"blue",
-                fontSize: "16px", 
+                color: "blue",
+                fontSize: "16px",
                 width: 64,
                 height: 64,
               }}
@@ -81,12 +93,12 @@ const App: React.FC = () => {
               type="text"
               icon={<PoweroffOutlined />}
               style={{
-                color:"red",
+                color: "red",
                 fontSize: "16px",
                 width: 64,
                 height: 64,
               }}
-              onClick={() => {}}
+              onClick={handleLogout}
             />
           </div>
         </Header>
@@ -99,7 +111,7 @@ const App: React.FC = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          Content
+           <Outlet />
         </Content>
       </Layout>
     </Layout>
